@@ -1,0 +1,7 @@
+start = int(input("Zadejte počáteční číslo: "))
+end = int(input("Zadejte koncové číslo: "))
+
+numbers = range(start, end+1)
+result = ",".join(str(number) for number in numbers)
+
+print(result)
