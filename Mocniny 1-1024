@@ -1,0 +1,18 @@
+# Dvě Proměnné
+a = 1
+b = 2
+
+while a <= 1024:
+    print(a)
+    a *=b
+    
+
+
+
+# Jedna Proměnná
+n = 1
+
+while n <= 10:
+    vysledek = 2 ** n
+    print(vysledek)
+    n += 1  
