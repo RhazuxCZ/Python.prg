@@ -1,0 +1,5 @@
+start = 1
+konec = 10
+for i in range(start, konec + 1):
+    if i % 2 == 0:
+        print(i)
