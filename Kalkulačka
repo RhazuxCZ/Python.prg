@@ -1,0 +1,13 @@
+num1 = float(input("Zadej první číslo: "))
+num2 = float(input("Zadej druhé číslo: "))
+operation = input("Zadej operaci (+, -, *, /): ")
+if operation == '+':
+    print(num1 + num2)
+elif operation == '-':
+    print(num1 - num2)
+elif operation == '*':
+    print(num1 * num2)
+elif operation == '/':
+    print(num1 / num2)
+else:
+    print("Neplatná operace")
