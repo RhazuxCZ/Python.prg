@@ -1,0 +1,17 @@
+import random
+
+def determine_winner(player_choice, computer_choice):
+    if player_choice == computer_choice:
+        return "Remíza"
+    elif (player_choice == 'kámen' and computer_choice == 'nůžky') or \
+         (player_choice == 'nůžky' and computer_choice == 'papír') or \
+         (player_choice == 'papír' and computer_choice == 'kámen'):
+        return "Vyhrál jsi!"
+    else:
+        return "Prohrál jsi."
+
+choices = ['kámen', 'nůžky', 'papír']
+computer_choice = random.choice(choices)
+player_choice = input("Zadej svůj výběr (kámen/nůžky/papír): ").lower()
+print("Počítač zvolil:", computer_choice)
+print(determine_winner(player_choice, computer_choice))
