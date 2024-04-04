@@ -1,0 +1,3 @@
+celsius = float(input("Zadej teplotu ve stupních Celsia: "))
+fahrenheit = (celsius * 9/5) + 32
+print("Teplota ve stupních Fahrenheit je:", fahrenheit)
