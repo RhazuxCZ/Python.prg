@@ -1,0 +1,65 @@
+import random
+
+# Vytvoření hracího pole s minami
+def create_board(size, num_ships):
+    board = [['O' for _ in range(size)] for _ in range(size)]
+    ships_placed = 0
+    while ships_placed < num_ships:
+        x = random.randint(0, size - 1)
+        y = random.randint(0, size - 1)
+        if board[x][y] == 'O':
+            board[x][y] = 'X'
+            ships_placed += 1
+    return board
+
+# Vykreslení hracího pole
+def draw_board(board, uncovered):
+    print("  " + " ".join(str(i) for i in range(len(board))))
+    for i, row in enumerate(board):
+        display_row = []
+        for j, cell in enumerate(row):
+            if (i, j) in uncovered:
+                display_row.append(cell)
+            else:
+                display_row.append('?')
+        print(chr(65 + i) + " " + " ".join(display_row))
+
+# Hlavní funkce pro hru
+def play_game():
+    board_size = 5
+    num_ships = 5
+    board = create_board(board_size, num_ships)
+    uncovered = set()
+    
+    print("Vítejte v hře Miny!")
+    draw_board(board, uncovered)
+
+    while True:
+        guess = input("Zadejte souřadnice (např. A1): ").upper()
+        if len(guess) != 2 or guess[0] not in 'ABCDE' or guess[1] not in '01234':
+            print("Neplatné souřadnice. Zadejte znovu.")
+            continue
+        
+        x = ord(guess[0]) - ord('A')
+        y = int(guess[1])
+        
+        if (x, y) in uncovered:
+            print("Toto pole jste již odkryli.")
+            continue
+        
+        uncovered.add((x, y))
+        
+        if board[x][y] == 'X':
+            print("Zásah! Loď potopena!")
+            draw_board(board, uncovered)
+            print("Konec hry. Bohužel jste ztratil.")
+            break
+        else:
+            print("Zásah na prázdném poli.")
+            draw_board(board, uncovered)
+        
+        if len(uncovered) == board_size * board_size - num_ships:
+            print("Gratulujeme! Vyhral jste!")
+            break
+
+play_game()
